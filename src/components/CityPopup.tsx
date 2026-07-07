@@ -49,11 +49,15 @@ export const CityPopup = () => {
   const moonIllum = SunCalc.getMoonIllumination(new Date(currentTime));
   
   // Format sun times to local city time
-  const sunriseStr = formatCityTime(sunTimes.sunrise.getTime(), selectedCity.timezone, is24Hour, false);
-  const sunsetStr = formatCityTime(sunTimes.sunset.getTime(), selectedCity.timezone, is24Hour, false);
+  // Some extreme latitudes might not have sunrise/sunset on certain days (returns null or undefined)
+  const sunriseStr = sunTimes.sunrise ? formatCityTime(sunTimes.sunrise.getTime(), selectedCity.timezone, is24Hour, false) : '--:--';
+  const sunsetStr = sunTimes.sunset ? formatCityTime(sunTimes.sunset.getTime(), selectedCity.timezone, is24Hour, false) : '--:--';
   
   // Determine if it's day or night in that city
-  const isDay = currentTime > sunTimes.sunrise.getTime() && currentTime < sunTimes.sunset.getTime();
+  // If sunrise/sunset are null (e.g. polar day/night), we might need a fallback, but for now we'll default to day if undefined
+  const isDay = sunTimes.sunrise && sunTimes.sunset 
+    ? (currentTime > sunTimes.sunrise.getTime() && currentTime < sunTimes.sunset.getTime())
+    : true;
   const season = getSeason(new Date(currentTime), selectedCity.lat);
   
   const WeatherIcon = weather ? getWeatherIcon(weather.code) : null;
