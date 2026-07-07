@@ -30,12 +30,12 @@ Deliver a polished, frontend-only application that feels like a live, interactiv
 - [x] Animate the movement of the terminator and update all city data.
 
 **Milestone 5 — Environmental Data**
-- [ ] Integrate weather and astronomy information.
-- [ ] Add sunrise, sunset, moon phase, and twilight details.
+- [x] Integrate weather and astronomy information.
+- [x] Add sunrise, sunset, moon phase, and twilight details.
 
 **Milestone 6 — Productivity Features**
-- [ ] Implement the meeting planner and travel planner.
-- [ ] Add comparison panels for multiple cities.
+- [x] Implement the meeting planner and travel planner.
+- [x] Add comparison panels for multiple cities.
 
 **Milestone 7 — Polish**
 - [ ] Improve animations with Framer Motion.
@@ -48,8 +48,8 @@ Deliver a polished, frontend-only application that feels like a live, interactiv
 - [x] **Phase 2:** Live Time Integration
 - [x] **Phase 3:** Visualization
 - [x] **Phase 4:** Simulation Mode
-- [ ] **Phase 5:** Environment & Weather Data
-- [ ] **Phase 6:** Productivity Tools
+- [x] **Phase 5:** Environment & Weather Data
+- [x] **Phase 6:** Productivity Tools
 - [ ] **Phase 7:** Final Polish
 
 ## 📊 Project Tracking
@@ -85,8 +85,8 @@ Deliver a polished, frontend-only application that feels like a live, interactiv
 | M2: Live Time | 100% |
 | M3: Earth Viz | 100% |
 | M4: Simulation | 100% |
-| M5: Environment | 0% |
-| M6: Productivity | 0% |
+| M5: Environment | 100% |
+| M6: Productivity | 100% |
 | M7: Polish | 0% |
 
 ## ⚠️ Potential Risks and Mitigation Strategies

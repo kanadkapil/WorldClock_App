@@ -23,6 +23,13 @@ interface AppState {
   // Simulation
   simulatedTime: number | null; // null means live time
   setSimulatedTime: (time: number | null) => void;
+
+  // Meeting Planner
+  comparedCities: CityData[];
+  addComparedCity: (city: CityData) => void;
+  removeComparedCity: (cityId: string) => void;
+  isPlannerOpen: boolean;
+  setPlannerOpen: (isOpen: boolean) => void;
 }
 
 export const useAppStore = create<AppState>((set) => ({
@@ -36,4 +43,15 @@ export const useAppStore = create<AppState>((set) => ({
 
   simulatedTime: null,
   setSimulatedTime: (time) => set({ simulatedTime: time }),
+
+  comparedCities: [],
+  addComparedCity: (city) => set((state) => {
+    if (state.comparedCities.find(c => c.id === city.id)) return state;
+    return { comparedCities: [...state.comparedCities, city] };
+  }),
+  removeComparedCity: (cityId) => set((state) => ({
+    comparedCities: state.comparedCities.filter(c => c.id !== cityId)
+  })),
+  isPlannerOpen: false,
+  setPlannerOpen: (isOpen) => set({ isPlannerOpen: isOpen }),
 }));

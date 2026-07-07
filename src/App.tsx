@@ -7,8 +7,9 @@ import { PersonalClock } from './components/PersonalClock';
 import { CityPopup } from './components/CityPopup';
 import { TimelineControl } from './components/TimelineControl';
 import { TimezoneScale } from './components/TimezoneScale';
+import { MeetingPlanner } from './components/MeetingPlanner';
 import { getTerminatorGeoJSON, getTimezoneGridGeoJSON } from './utils/terminator';
-import { Layers, Globe } from 'lucide-react';
+import { Layers, Globe, CalendarClock } from 'lucide-react';
 
 const MAP_STYLES = [
   { id: 'dark', name: 'Dark Mode', url: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json' },
@@ -19,7 +20,7 @@ const MAP_STYLES = [
 function App() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
-  const { selectedCity, setSelectedCity, simulatedTime } = useAppStore();
+  const { selectedCity, setSelectedCity, simulatedTime, isPlannerOpen, setPlannerOpen } = useAppStore();
   const [mapStyle, setMapStyle] = useState(MAP_STYLES[0]);
   const [showStyleMenu, setShowStyleMenu] = useState(false);
   const [showGrid, setShowGrid] = useState(false);
@@ -134,7 +135,6 @@ function App() {
   // Handle grid toggle
   useEffect(() => {
     if (!mapRef.current) return;
-    const layerId = 'timezone-grid-layer';
     if (mapRef.current.getLayer('timezone-grid-layer')) {
       mapRef.current.setLayoutProperty('timezone-grid-layer', 'visibility', showGrid ? 'visible' : 'none');
     }
@@ -180,7 +180,15 @@ function App() {
             <SearchBox />
             
             <button 
-                className={`btn btn-circle btn-sm ${showGrid ? 'btn-primary' : 'btn-ghost'} ml-2`}
+                className={`btn btn-circle btn-sm ${isPlannerOpen ? 'btn-primary' : 'btn-ghost'} ml-2`}
+                onClick={() => setPlannerOpen(!isPlannerOpen)}
+                title="Toggle Meeting Planner"
+              >
+                <CalendarClock size={18} />
+            </button>
+            
+            <button 
+                className={`btn btn-circle btn-sm ${showGrid ? 'btn-primary' : 'btn-ghost'}`}
                 onClick={() => setShowGrid(!showGrid)}
                 title="Toggle Timezone Grid"
               >
@@ -222,6 +230,7 @@ function App() {
       <CityPopup />
       <PersonalClock />
       <TimelineControl />
+      <MeetingPlanner />
     </div>
   );
 }

@@ -12,18 +12,23 @@ The WorldClock App is a highly interactive, animated, and fast frontend-only das
 - Built logic to determine local season based on latitude.
 - Developed a highly interactive Timeline Control with scrubbing, live reset, and date/time picker.
 - Connected the global `simulatedTime` state to animate the terminator shadow and update all local clocks dynamically.
+- Integrated Open-Meteo API to fetch and display live weather and temperatures for cities.
+- Implemented real-time Moon Phase logic using `suncalc`, animating dynamically alongside the timeline.
+- Built a multi-city Meeting Planner with business hour visualizations synced to the global simulated time.
 
 ## 🚧 Features Currently in Development
-- Milestone 5 — Environmental Data (Weather, detailed astronomy, sunrise/sunset info).
+- Milestone 7 — Polish (Animations, Performance, Accessibility, Onboarding).
 
 ## ✅ Completed Milestones
 - Milestone 1 — Foundation
 - Milestone 2 — Live Time
 - Milestone 3 — Earth Visualization
 - Milestone 4 — Time Simulation
+- Milestone 5 — Environmental Data
+- Milestone 6 — Productivity Features
 
 ## 📊 Progress Summary
-Time Simulation logic is fully operational. The app effectively operates as a 4-dimensional temporal globe. The team is now proceeding to Milestone 5 to integrate environmental/astronomical data.
+The Meeting Planner has been successfully integrated, allowing users to compare business hours across multiple global cities dynamically. We are now entering the final phase of the project: Milestone 7 (Polish).
 
 ## 📈 Performance Improvements
 - *Pending initial profiling.*
@@ -45,4 +50,4 @@ Time Simulation logic is fully operational. The app effectively operates as a 4-
 Project initialized and documentation formalized. The team is now moving toward scaffolding the foundational architecture of the application.
 
 ## 🎯 Current Completion Percentage
-**57%** (Phase 4 complete)
+**85%** (Phase 6 complete)
