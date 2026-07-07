@@ -41,26 +41,28 @@ export const SearchBox = () => {
             setIsOpen(true);
           }}
           onFocus={() => setIsOpen(true)}
+          aria-label="Search cities"
         />
       </div>
 
       {isOpen && query.length > 0 && (
         <div className="absolute top-full mt-2 w-full bg-base-100/95 backdrop-blur-md border border-base-content/10 shadow-xl rounded-box overflow-hidden">
           {filteredCities.length > 0 ? (
-            <ul className="menu menu-sm">
+            <ul className="menu menu-sm" aria-label="Search results">
               {filteredCities.map(city => (
                 <li key={city.id}>
-                  <a 
+                  <button 
                     onClick={() => {
                       setSelectedCity(city);
                       setIsOpen(false);
                       setQuery('');
                     }}
                     className="flex flex-col items-start py-2"
+                    aria-label={`Select ${city.name}`}
                   >
                     <span className="font-medium">{city.name}</span>
                     <span className="text-xs text-base-content/60">{city.country} • {city.timezone}</span>
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>

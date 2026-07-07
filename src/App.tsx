@@ -8,6 +8,7 @@ import { CityPopup } from './components/CityPopup';
 import { TimelineControl } from './components/TimelineControl';
 import { TimezoneScale } from './components/TimezoneScale';
 import { MeetingPlanner } from './components/MeetingPlanner';
+import { SettingsMenu } from './components/SettingsMenu';
 import { getTerminatorGeoJSON, getTimezoneGridGeoJSON } from './utils/terminator';
 import { Layers, Globe, CalendarClock } from 'lucide-react';
 
@@ -183,6 +184,7 @@ function App() {
                 className={`btn btn-circle btn-sm ${isPlannerOpen ? 'btn-primary' : 'btn-ghost'} ml-2`}
                 onClick={() => setPlannerOpen(!isPlannerOpen)}
                 title="Toggle Meeting Planner"
+                aria-label="Toggle Meeting Planner"
               >
                 <CalendarClock size={18} />
             </button>
@@ -191,14 +193,19 @@ function App() {
                 className={`btn btn-circle btn-sm ${showGrid ? 'btn-primary' : 'btn-ghost'}`}
                 onClick={() => setShowGrid(!showGrid)}
                 title="Toggle Timezone Grid"
+                aria-label="Toggle Timezone Grid"
               >
                 <Globe size={18} />
             </button>
+            
+            <SettingsMenu />
             
             <div className="relative">
               <button 
                 className="btn btn-circle btn-ghost btn-sm"
                 onClick={() => setShowStyleMenu(!showStyleMenu)}
+                aria-label="Change Map Style"
+                title="Change Map Style"
               >
                 <Layers size={18} />
               </button>

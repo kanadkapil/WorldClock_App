@@ -86,20 +86,27 @@ export const TimelineControl = () => {
       </div>
 
       <div className="bg-base-100/80 backdrop-blur-xl rounded-full shadow-2xl border border-base-content/10 p-2 flex items-center gap-3 w-full">
-        <button 
+        <motion.button 
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           className={`btn btn-circle btn-sm ml-1 ${isPlaying ? 'btn-primary' : 'btn-ghost'}`}
           onClick={() => setIsPlaying(!isPlaying)}
+          aria-label={isPlaying ? 'Pause simulation' : 'Play simulation'}
+          title={isPlaying ? 'Pause' : 'Play'}
         >
           {isPlaying ? <Pause size={16} /> : <Play size={16} className="ml-0.5" />}
-        </button>
+        </motion.button>
 
-        <button 
+        <motion.button 
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           className="btn btn-circle btn-ghost btn-sm"
           onClick={() => setSpeedMultiplier(prev => prev === 3600 ? 86400 : 3600)} 
           title={`Speed: ${speedMultiplier === 3600 ? '1 hr/s' : '1 day/s'}`}
+          aria-label="Toggle simulation speed"
         >
           <FastForward size={16} className={speedMultiplier > 3600 ? 'text-primary' : ''} />
-        </button>
+        </motion.button>
 
         <input 
           type="range" 
@@ -110,12 +117,16 @@ export const TimelineControl = () => {
           className="range range-xs range-primary flex-1 mx-2" 
         />
 
-        <button 
+        <motion.button 
+          whileHover={simulatedTime ? { scale: 1.05 } : {}}
+          whileTap={simulatedTime ? { scale: 0.95 } : {}}
           className={`btn btn-ghost btn-sm rounded-full mr-1 ${!simulatedTime ? 'btn-disabled opacity-50' : ''}`}
           onClick={resetToLive}
+          aria-label="Reset to Live Time"
+          title="Reset to Live Time"
         >
           <RotateCcw size={14} className="mr-1" /> Live
-        </button>
+        </motion.button>
       </div>
     </motion.div>
   );

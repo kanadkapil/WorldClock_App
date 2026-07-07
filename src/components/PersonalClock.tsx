@@ -28,11 +28,14 @@ export const PersonalClock = () => {
   const dateString = formatCityDate(currentTime, userTz);
 
   return (
-    <div className="absolute bottom-6 left-6 z-10 pointer-events-auto">
-      <motion.div 
+    <motion.div 
+      className="absolute bottom-6 left-6 z-10 pointer-events-auto"
+      initial={{ opacity: 0, y: 50, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ type: 'spring', damping: 25, stiffness: 300, delay: 0.2 }}
+    >
+      <div 
         className="bg-base-100/80 backdrop-blur-md border border-base-content/10 shadow-2xl rounded-2xl overflow-hidden"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
       >
         <div className="p-4 flex items-center justify-between gap-6">
           <div>
@@ -78,7 +81,7 @@ export const PersonalClock = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.div>
-    </div>
+      </div>
+    </motion.div>
   );
 };
